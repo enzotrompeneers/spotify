@@ -1,0 +1,18 @@
+.top-bar, .top-bar-section  {
+	background-color: #2d3940;
+	color: #fff;
+} 
+
+.top-menu li {
+    float: left;
+}
+.top-menu li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.top-menu li a:hover {
+    text-decoration: underline;
+}
