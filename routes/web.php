@@ -1,7 +1,8 @@
 <?php
 
-Route::get('/', 'HomeController@index'); 
-Route::get('participate', 'ParticipateController@index'); 
-Route::get('login', 'AdminController@index'); 
-Route::get('participants', 'ParticipantsController@index'); 
-Route::get('participants/{id}', 'ParticipantsController@show'); 
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('deelnemen', 'DeelnemenController@index')->name('deelnemen');
+Route::get('deelnemers', 'ParticipantsController@index'); 
+Route::get('deelnemer/{id}', 'DeelnemerController@show')->name('deelnemer');
