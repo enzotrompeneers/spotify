@@ -12,8 +12,13 @@
                 <li><a href="{{ route('deelnemen') }}">Deelnemen</a></li>
             </ul>
             <ul class="right">
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Registreren</a></li>
+                @if ($user = Auth::guest()) 
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Registreren</a></li>
+                @else
+                     <li><a href="{{ route('logout') }}">Uitloggen</a></li>
+                @endif
+                
             </ul>
         </section>
         </nav>
