@@ -13,6 +13,7 @@
             </ul>
             <ul class="right">
                 <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Registreren</a></li>
             </ul>
         </section>
         </nav>

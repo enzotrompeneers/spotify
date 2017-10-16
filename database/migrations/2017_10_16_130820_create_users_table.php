@@ -12,7 +12,6 @@ class CreateUsersTable extends Migration {
 			$table->string('name', 255);
 			$table->string('email', 255);
 			$table->string('password', 255);
-			$table->string('salt', 255);
 			$table->ipAddress('ipaddress');
 			$table->string('address', 255);
 			$table->string('city', 255);
