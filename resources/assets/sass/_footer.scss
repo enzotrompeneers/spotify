@@ -1,10 +1,17 @@
-
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
 .marketing-site-footer {
   background: #2c3840;
   color: #8aa0ae;
   padding: 2rem 0 0;
 }
-
 .marketing-site-footer .marketing-site-footer-menu-social a {
   color: #fefefe;
 }

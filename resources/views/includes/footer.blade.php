@@ -1,4 +1,4 @@
-<footer class="marketing-site-footer">
+<footer class="footer marketing-site-footer">
 	<div class="row medium-unstack">
 		<div class="medium-4 columns">
 			<h4 class="marketing-site-footer-title">Spotify</h4>

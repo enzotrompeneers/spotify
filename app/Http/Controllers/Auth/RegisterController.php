@@ -65,7 +65,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //$ipaddress = Request::getClientIp();
         $ipaddress = $_SERVER['REMOTE_ADDR'];
 
         return User::create([
@@ -74,7 +73,6 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'address' => $data['address'],
             'city' => $data['city'],
-            //'ipaddress' => \Request::ip(),
             'ipaddress'=> $ipaddress
         ]);
     }
