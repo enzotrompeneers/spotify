@@ -28,18 +28,27 @@
 			<div class="wrap">
 				<form class="form-horizontal" method="POST" action="{{ route('deelnemer.store') }}" data-abide novalidate>
 				{{ csrf_field() }}
+
 				<div class="box box1 shadow1">
 					@foreach ($artist1 as $artist)
 						<h3>{{ $artist->name }}</h3>
 					@endforeach
 					<div data-draggable="target" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" name="{{ $artist1[0]->name }}">
 						<ul>
-							@foreach ($all_tracks_shuffled as $track)
-								<li class="track_title" ondragstart="dragStart(event)" draggable="true" id="{{ $track }}" name="{{ $track }}">{{ $track }}</li>
-							@endforeach
+							
 							
 						</ul>
 					</div>
+				</div>
+
+				<div class="box box1 shadow1">
+					<h3>Slepen</h3>
+					<div class="droptarget">
+						@foreach ($all_tracks_shuffled as $track)
+							<li class="track_title" ondragstart="dragStart(event)" draggable="true" id="{{ $track }}" name="{{ $track }}">{{ $track }}</li>
+						@endforeach
+					</div>
+					
 				</div>
 
 				<div class="box box1 shadow1">
@@ -58,7 +67,6 @@
                         Verzenden
                     </button>
                 </div>
-
 			</div>
 		</div> 
 	</div>
