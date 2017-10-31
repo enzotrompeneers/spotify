@@ -20,7 +20,7 @@
 			<h1>De wedstrijd is gestart!</h1>
 			<p>
 				Het is de bedoeling om de juiste nummers bij de juiste artiest te zetten.
-				Dit doe je door het nummer te <b>slepen</b> naar het juiste vak van de artiest.
+				Dit doe je door de nummers te <b>slepen</b> naar het juiste vak van de artiest.
 				Succes ermee!
 			</p>
 		</div>
@@ -32,26 +32,30 @@
 					@foreach ($artist1 as $artist)
 						<h3>{{ $artist->name }}</h3>
 					@endforeach
-					<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
-						@foreach ($all_tracks_shuffled as $track)
-							<p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="{{ $track }}">{{ $track }}</p>
-						@endforeach
-
+					<div data-draggable="target" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" name="{{ $artist1[0]->name }}">
+						<ul>
+							@foreach ($all_tracks_shuffled as $track)
+								<li class="track_title" ondragstart="dragStart(event)" draggable="true" id="{{ $track }}" name="{{ $track }}">{{ $track }}</li>
+							@endforeach
+							
+						</ul>
 					</div>
 				</div>
 
-				<div class="box box5 shadow1">
+				<div class="box box1 shadow1">
 					@foreach ($artist2 as $artist)
 						<h3>{{ $artist->name }}</h3>
 					@endforeach
-					<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+					<div data-draggable="target" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" name="{{ $artist2[0]->name }}">
+						<ul>
 
+						</ul>
 					</div>
 				</div>
 
 				<div class="small-12 columns">
-                    <button type="submit" class="button primary">
-                        Opslaan
+                    <button type="submit" class="btn_spotify">
+                        Verzenden
                     </button>
                 </div>
 
@@ -64,17 +68,21 @@
 @stop
 
 <script>
-	function dragStart(event) {
-		event.dataTransfer.setData("Text", event.target.id);
+	function dragStart(e) {
+		e.dataTransfer.setData("Text", event.target.id);
 	}
 
-	function allowDrop(event) {
-		event.preventDefault();
+	function allowDrop(e) {
+		e.preventDefault();
 	}
 
-	function drop(event) {
-		event.preventDefault();
-		var data = event.dataTransfer.getData("Text");
-		event.target.appendChild(document.getElementById(data));
+	function drop(e) {
+		if(e.target.getAttribute('data-draggable') == 'target') {
+		e.preventDefault();
+		var data = e.dataTransfer.getData("Text");
+		e.target.appendChild(document.getElementById(data));
+		}
 	}
+
+	
 </script>

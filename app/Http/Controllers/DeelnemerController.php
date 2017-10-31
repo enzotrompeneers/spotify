@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class DeelnemerController extends Controller
 {
@@ -11,5 +12,6 @@ class DeelnemerController extends Controller
     }
     public function store() {
         
+
     }
 }

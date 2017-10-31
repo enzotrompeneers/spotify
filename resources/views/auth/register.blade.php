@@ -66,7 +66,7 @@
             </div>
             <div class="row">
                 <div class="small-12 columns">
-                    <button type="submit" class="button primary">
+                    <button type="submit" class="btn_spotify ">
                         Registreren
                     </button>
                 </div>
