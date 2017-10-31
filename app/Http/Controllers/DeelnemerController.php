@@ -9,4 +9,7 @@ class DeelnemerController extends Controller
     public function show ($id) {
         return view ('deelnemer', compact('id'));
     }
+    public function store() {
+        
+    }
 }

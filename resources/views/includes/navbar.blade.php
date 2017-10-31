@@ -9,7 +9,7 @@
         <section class="top-menu">
             <ul class="left">
                 <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('deelnemen') }}">Deelnemen</a></li>
+                <li><a href="{{ route('spotify.show') }}">Deelnemen</a></li>
             </ul>
             <ul class="right">
                 @if ($user = Auth::guest()) 

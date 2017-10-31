@@ -4,24 +4,15 @@ Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('deelnemen', 'DeelnemenController@index')->name('deelnemen');
+
+
+
 Route::get('deelnemers', 'ParticipantsController@index')->name('deelnemers');
 Route::get('deelnemer/{id}', 'DeelnemerController@show')->name('deelnemer.show');
 
 
-/**
 
-// CRUD
-// Create
-Route::post();
 
-// Read
-Route::get();
+Route::get('deelnemen', 'SpotifyController@show')->name('spotify.show');
 
-// Update
-Route::put();
-
-// Delete
-Route::delete();
-// End CRUD
-**/
+Route::post('deelnemen', 'DeelnemerController@store')->name('deelnemer.store');
