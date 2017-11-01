@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contest;
+use App\User;
 
 class DatumController extends Controller
 {
@@ -13,10 +14,7 @@ class DatumController extends Controller
 
     public function show() {
         $contests = Contest::all();
-
-
-	    
-    
-    	return view ('wedstrijddatums', compact('contests'));
+        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
+    	return view ('wedstrijddatums', compact('contests', 'admin_email'));
     }
 }

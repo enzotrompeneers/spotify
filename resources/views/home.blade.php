@@ -3,16 +3,14 @@
 @section('content')
 @include('partials.carousel')
 
-
 <hr>
 @if (Auth::user())
     @if (Auth::user()->email == $admin[0])
         <div class="row">
-            <div class="large-12.columns">
+            <div class="large-4 columns">
                 <h2>Admin</h2>
-                @include('partials.wedstrijdverantwoordelijke')
+                @include('partials.wedstrijdverantwoordelijke');
 
-                <h2></h2>
                 <a class="btn_spotify" href="{{ route('datum.show') }}">Toon Wedstrijddatums</a>
             </div>
         </div>
@@ -21,7 +19,7 @@
 @endif
 
 <div class="row">
-    <div class="large-12.columns">
+    <div class="large-4 columns">
         @if(isset($succes_message))
             <div data-alert class="alert-box success round">
                 {{ $succes_message }}
