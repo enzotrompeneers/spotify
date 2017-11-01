@@ -104,11 +104,12 @@
         });
     
         var artist2_tracks = [];
-        document.querySelectorAll('[data-draggable="artist1_tracks"] li').forEach(function(li) {
+        document.querySelectorAll('[data-draggable="artist2_tracks"] li').forEach(function(li) {
             artist2_tracks.push(li.textContent);
         });
 
         document.getElementsByName('artist1_tracks')[0].value = JSON.stringify(artist1_tracks);
+		document.getElementsByName('artist2_tracks')[0].value = JSON.stringify(artist2_tracks);
 	}
 
     function drop(e) {

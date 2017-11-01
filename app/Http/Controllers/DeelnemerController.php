@@ -13,6 +13,7 @@ class DeelnemerController extends Controller
     public function show ($id) {
         return view ('deelnemer', compact('id'));
     }
+
     public function store(Request $request) {
         $artist1_id = $request->get("artist1_id");
         $artist2_id = $request->get("artist2_id");
@@ -20,10 +21,51 @@ class DeelnemerController extends Controller
         $artist1_tracks = json_decode($request->get("artist1_tracks"), true);
         $artist2_tracks = json_decode($request->get("artist2_tracks"), true);
 
-        if() {
-            
+        $tracks_from_artist1 = Track::
+        where('artist_id', $artist1_id)
+        ->get()
+        ->pluck('name')
+        ->toArray();
+
+        $tracks_from_artist2 = Track::
+        where('artist_id', $artist2_id)
+        ->get()
+        ->pluck('name')
+        ->toArray(); 
+
+        $score = 10;
+
+        if(isset($artist1_tracks)) {
+            foreach($artist1_tracks as $track) {
+                if((in_array($track, $tracks_from_artist1))) {
+                    $score += 1;
+                    
+                }
+                else {
+                    $score -=1;
+                    
+                }
+            }
         }
+
+        if(isset($artist2_tracks)) {
+            foreach($artist2_tracks as $track) {
+                if((in_array($track, $tracks_from_artist2))) {
+                    $score += 1;
+                    
+                }
+                else {
+                    $score -=1;
+                    
+                }
+            }
+        }
+        var_dump(compact('score'));die;
         
-        var_dump(compact('artist1_id', 'artist1_tracks', 'artist2_id', 'artist2_tracks'));die;
+        
+
+  
+        
+        //var_dump(compact('score'));die;
     }
 }
