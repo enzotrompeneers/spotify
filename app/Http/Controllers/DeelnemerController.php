@@ -57,7 +57,6 @@ class DeelnemerController extends Controller
             }
         }
 
-        
         var_dump(compact('points'));die;
     }
 }
