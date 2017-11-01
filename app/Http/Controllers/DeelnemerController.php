@@ -33,17 +33,15 @@ class DeelnemerController extends Controller
         ->pluck('name')
         ->toArray(); 
 
-        $score = 10;
+        $points = 10;
 
         if(isset($artist1_tracks)) {
             foreach($artist1_tracks as $track) {
                 if((in_array($track, $tracks_from_artist1))) {
-                    $score += 1;
-                    
+                    $points += 1;
                 }
                 else {
-                    $score -=1;
-                    
+                    $points -=1;
                 }
             }
         }
@@ -51,21 +49,15 @@ class DeelnemerController extends Controller
         if(isset($artist2_tracks)) {
             foreach($artist2_tracks as $track) {
                 if((in_array($track, $tracks_from_artist2))) {
-                    $score += 1;
-                    
+                    $points += 1;
                 }
                 else {
-                    $score -=1;
-                    
+                    $points -=1;
                 }
             }
         }
-        var_dump(compact('score'));die;
-        
-        
 
-  
         
-        //var_dump(compact('score'));die;
+        var_dump(compact('points'));die;
     }
 }

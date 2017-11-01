@@ -16,9 +16,8 @@
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Registreren</a></li>
                 @else
-                     <li><a href="{{ route('logout') }}">Uitloggen</a></li>
+                    <li><a href="{{ route('logout') }}">Uitloggen</a></li>
                 @endif
-                
             </ul>
         </section>
         </nav>
