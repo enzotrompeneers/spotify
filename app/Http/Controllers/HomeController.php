@@ -14,6 +14,7 @@ class HomeController extends Controller
         ->pluck('email')
         ->toArray();
 
+
         return view('home', compact('admin'));
     }
 }
