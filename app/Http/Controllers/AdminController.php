@@ -16,24 +16,30 @@ class AdminController extends Controller
 
         
         $email = $request->get("email");
+        
         $email_exist = false;
 
         if (User::where('email', '=', $email)->exists()) {
+            
             $email_exist = true;
-
+            
             $old_admin = User::where('isAdmin', '=', 1)->first();
+            $old_email = $old_admin->email;
             $user_admin = User::where('email', '=', $email)->first();
-            
-            $user_admin->isAdmin = 1;
-            $old_admin->isAdmin = 0;
-            
-            $user_admin->save();
-            $old_admin->save();
-            $admin = false;
-            
 
+            if(!($email == $old_email)) {
+                $user_admin->isAdmin = 1;
+                $old_admin->isAdmin = 0;
+
+                $user_admin->save();
+                $old_admin->save();
+                    
+                $admin = false;
+                $succes_message = "De verantwoordelijke is gewijzigd.";
+            }
+            
          }
-         return view('home', compact('admin', 'email_exist'));
+         return view('home', compact('admin', 'email_exist', 'succes_message'));
          
 
        

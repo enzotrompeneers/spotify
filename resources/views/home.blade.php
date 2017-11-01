@@ -49,8 +49,15 @@
         <hr>
     @endif
 @endif
+
 <div class="row">
     <div class="large-12.columns">
+        @if(isset($succes_message))
+            <div data-alert class="alert-box success round">
+                {{ $succes_message }}
+                <a href="#" class="close">&times;</a>
+            </div>
+        @endif
         <h2>De Winnaars</h2>
         <ul>
             <li>Periode 1: test</li>
