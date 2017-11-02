@@ -7,10 +7,9 @@
 @if (Auth::user())
     @if (Auth::user()->email == $admin[0])
         <div class="row">
-            <div class="large-4 columns">
-                <h2>Admin</h2>
-                @include('partials.wedstrijdverantwoordelijke');
-
+            <div class="large-12 columns">
+                <h1>Admin</h1>
+                <a class="btn_spotify" href="{{ route('admin.show') }}">Toon Wedstrijdverantwoordelijke</a>
                 <a class="btn_spotify" href="{{ route('datum.show') }}">Toon Wedstrijddatums</a>
             </div>
         </div>
@@ -26,7 +25,7 @@
                 <a href="#" class="close">&times;</a>
             </div>
         @endif
-        <h2>De Winnaars</h2>
+        <h1>De Winnaars</h1>
         <ul>
             <li>Periode 1: test</li>
             <li>Periode 2: test</li>

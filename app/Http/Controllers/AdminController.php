@@ -7,6 +7,19 @@ use App\User;
 
 class AdminController extends Controller
 {
+    public function show() {
+        $admin = User::
+        where('isAdmin', 1)
+        ->get()
+        ->pluck('email')
+        ->toArray();
+
+        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
+        
+        
+         return view('wedstrijdverantwoordelijke', compact('admin', 'admin_email'));
+    }
+
     public function update(Request $request) {
         $admin = User::
         where('isAdmin', 1)
@@ -16,8 +29,10 @@ class AdminController extends Controller
 
         
         $email = $request->get("email");
+        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
         
         $email_exist = false;
+
 
         if (User::where('email', '=', $email)->exists()) {
             
@@ -35,11 +50,12 @@ class AdminController extends Controller
                 $old_admin->save();
                     
                 $admin = false;
-                $succes_message = "De verantwoordelijke is gewijzigd.";
+                $succes_message = "De wedstrijdverantwoordelijke is gewijzigd.";
+                return view('home', compact('admin','succes_message'));
             }
             
          }
-         return view('home', compact('admin', 'email_exist', 'succes_message'));
+         return view('wedstrijdverantwoordelijke', compact('admin', 'email_exist', 'succes_message', 'admin_email'));
          
 
        
