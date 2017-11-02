@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreParticipation extends FormRequest
+class DatumRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class StoreParticipation extends FormRequest
     public function rules()
     {
         return [
-            'points' => 'required|integer',
+            'start_date' => 'required',
+            'start_hour' => 'required',
+            'end_date' => 'required',
+            'end_hour' => 'required',
         ];
     }
 }

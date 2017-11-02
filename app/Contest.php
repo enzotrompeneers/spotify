@@ -10,10 +10,12 @@ class Contest extends Model
     public $timestamps = true;
     
     protected $fillable = [
-        'startDate', 'endDate', 'user_id'
+        'startDate', 'endDate'
     ];
 
-    public function User() {
-    	return $this->belongsTo('App\User');
+    public function Contest_user()
+    {
+        return $this->hasMany('Contest_user', 'contest_id');
     }
+
 }

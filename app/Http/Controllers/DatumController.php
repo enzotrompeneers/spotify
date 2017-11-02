@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Contest;
 use App\User;
 
+use App\Http\Requests\DatumRequest;
+
 class DatumController extends Controller
 {
     /**
@@ -27,7 +29,7 @@ class DatumController extends Controller
      */
     public function create()
     {
-        //
+        // already in index
     }
 
     /**
@@ -36,9 +38,10 @@ class DatumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DatumRequest $request)
     {
-        //
+        Contest::create($request->all());
+        return redirect()->route('datum.index')->width('message', 'Nieuwe datum is aangemaakt.');
     }
 
     /**

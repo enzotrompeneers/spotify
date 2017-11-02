@@ -8,11 +8,6 @@ class CreateForeignKeys extends Migration {
 
 	public function up()
 	{
-		Schema::table('contests', function(Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('users')
-						->onDelete('cascade')
-						->onUpdate('cascade');
-		});
 		Schema::table('participations', function(Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('cascade')
@@ -33,13 +28,20 @@ class CreateForeignKeys extends Migration {
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
+		Schema::table('contests_users', function(Blueprint $table) {
+			$table->foreign('contest_id')->references('id')->on('contests')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
+		Schema::table('contests_users', function(Blueprint $table) {
+			$table->foreign('user_id')->references('id')->on('users')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
 	}
 
 	public function down()
 	{
-		Schema::table('contests', function(Blueprint $table) {
-			$table->dropForeign('contests_user_id_foreign');
-		});
 		Schema::table('participations', function(Blueprint $table) {
 			$table->dropForeign('participations_user_id_foreign');
 		});
@@ -51,6 +53,12 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('tracks', function(Blueprint $table) {
 			$table->dropForeign('tracks_artist_id_foreign');
+		});
+		Schema::table('contests_users', function(Blueprint $table) {
+			$table->dropForeign('contests_users_contest_id_foreign');
+		});
+		Schema::table('contests_users', function(Blueprint $table) {
+			$table->dropForeign('contests_users_user_id_foreign');
 		});
 	}
 }

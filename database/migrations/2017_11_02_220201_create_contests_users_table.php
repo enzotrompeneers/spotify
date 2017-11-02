@@ -3,21 +3,20 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateContestsTable extends Migration {
+class CreateContestsUsersTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('contests', function(Blueprint $table) {
+		Schema::create('contests_users', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->datetime('startDate');
-			$table->datetime('endDate');
+			$table->integer('contest_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('contests');
+		Schema::drop('contests_users');
 	}
 }
