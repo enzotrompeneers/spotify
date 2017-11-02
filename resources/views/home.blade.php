@@ -9,8 +9,8 @@
         <div class="row">
             <div class="large-12 columns">
                 <h1>Admin</h1>
-                <a class="btn_spotify" href="{{ route('admin.show') }}">Toon Wedstrijdverantwoordelijke</a>
-                <a class="btn_spotify" href="{{ route('datum.show') }}">Toon Wedstrijddatums</a>
+                <a class="btn_spotify" href="{{ route('wedstrijdverantwoordelijke.index') }}">Toon Wedstrijdverantwoordelijke</a>
+                <a class="btn_spotify" href="{{ route('datum.index') }}">Toon Wedstrijddatums</a>
             </div>
         </div>
         <hr>

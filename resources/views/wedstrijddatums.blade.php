@@ -28,7 +28,7 @@
                 <h1>Wedstrijddatum Aanmaken</h1>
             </div>
         </div>
-        <form action="{{ route('datum.create') }}" method="post">
+        <form action="{{ route('datum.create') }}" method="GET">
         {{ csrf_field() }}
             <div class="row">
                 <div class="large-3 columns">

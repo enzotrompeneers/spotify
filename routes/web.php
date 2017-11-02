@@ -5,17 +5,10 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('deelnemen', 'DeelnemenController@index')->name('deelnemen.index');
+Route::get('deelnemen/create', 'DeelnemenController@create')->name('deelnemen.create');
 
-Route::get('deelnemers', 'ParticipantsController@index')->name('deelnemers');
-Route::get('deelnemer/{id}', 'DeelnemerController@show')->name('deelnemer.show');
+Route::get('wedstrijdverantwoordelijke', 'WedstrijdverantwoordelijkeController@index')->name('wedstrijdverantwoordelijke.index');
+Route::post('wedstrijdverantwoordelijke', 'WedstrijdverantwoordelijkeController@update')->name('wedstrijdverantwoordelijke.update');
 
-
-
-Route::get('deelnemen', 'SpotifyController@show')->name('spotify.show');
-Route::post('deelnemen', 'DeelnemerController@store')->name('deelnemer.store');
-
-Route::get('wedstrijdverantwoordelijke', 'AdminController@show')->name('admin.show');
-Route::post('wedstrijdverantwoordelijke', 'AdminController@update')->name('admin.update');
-
-Route::get('datum', 'DatumController@show')->name('datum.show');
-Route::post('datum', 'DatumController@create')->name('datum.create');
+Route::resource('datum', 'DatumController');

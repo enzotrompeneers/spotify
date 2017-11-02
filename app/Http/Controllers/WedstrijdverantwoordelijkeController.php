@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class AdminController extends Controller
+class WedstrijdverantwoordelijkeController extends Controller
 {
-    public function show() {
+    public function index() {
         $admin = User::
         where('isAdmin', 1)
         ->get()

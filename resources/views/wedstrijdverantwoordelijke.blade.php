@@ -4,7 +4,7 @@
 @section('content')
 @if (Auth::user())
     @if (Auth::user()->email == $admin_email)
-    <form class="form-horizontal" method="POST" action="{{ route('admin.update') }}" data-abide novalidate>
+    <form class="form-horizontal" method="POST" action="{{ route('wedstrijdverantwoordelijke.update') }}" data-abide novalidate enctype="multipart/form-data">
         {{ csrf_field() }}
         
         <div class="row">

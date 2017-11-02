@@ -26,7 +26,7 @@
 		</div>
     	<div class="large-12 columns">
 			<div class="wrap">
-				<form class="form-horizontal" method="POST" action="{{ route('deelnemer.store') }}" data-abide novalidate>
+				<form class="form-horizontal" method="GET" action="{{ route('deelnemen.create') }}" data-abide novalidate>
 				{{ csrf_field() }}
 
 				<input type="hidden" name="artist1_tracks" value="">
