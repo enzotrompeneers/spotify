@@ -11,4 +11,5 @@ class Track extends Model
     protected $fillable = [
         'name', 'artist_id'
     ];
+
 }

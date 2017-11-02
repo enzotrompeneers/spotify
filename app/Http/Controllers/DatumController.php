@@ -41,7 +41,7 @@ class DatumController extends Controller
     public function store(DatumRequest $request)
     {
         Contest::create($request->all());
-        return redirect()->route('datum.index')->width('message', 'Nieuwe datum is aangemaakt.');
+        return redirect()->route('datum.index');
     }
 
     /**

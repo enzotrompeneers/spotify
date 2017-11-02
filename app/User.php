@@ -39,6 +39,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('Contest_user', 'user_id');
     }
-
-    
 }
