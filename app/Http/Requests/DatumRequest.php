@@ -24,10 +24,10 @@ class DatumRequest extends FormRequest
     public function rules()
     {
         return [
-            'start_date' => 'required',
-            'start_hour' => 'required',
-            'end_date' => 'required',
-            'end_hour' => 'required',
+            'startDate' => 'required',
+            'startHour' => 'required',
+            'endDate' => 'required',
+            'endHour' => 'required',
         ];
     }
 }

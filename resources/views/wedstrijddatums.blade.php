@@ -33,29 +33,29 @@
             <div class="row">
                 <div class="large-3 columns">
                     <div class="form-group">
-                        <label for="start_date">Start Datum</label>
-                        <input type="date" id="start_date" name="start_date" placeholder="yyyy-mm-dd">
+                        <label for="startDate">Start Datum</label>
+                        <input type="date" id="startDate" name="startDate" placeholder="yyyy-mm-dd">
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="form-group">
-                        <label for="start_hour">Start uur</label>
-                        <input type="time" id="start_hour" name="start_hour" placeholder="Start uur" value="12:00">
+                        <label for="startHour">Start uur</label>
+                        <input type="time" id="startHour" name="startHour" placeholder="Start uur" value="12:00">
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="form-group">
-                        <label for="to">Einde Datum</label>
-                        <input type="date" id="end_date" name="end_date" placeholder="yyyy-mm-dd">
+                        <label for="endDate">Einde Datum</label>
+                        <input type="date" id="endDate" name="endDate" placeholder="yyyy-mm-dd">
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="form-group">
-                        <label for="end_hour">Einde uur</label>
-                        <input type="time" id="end_hour" name="end_hour" placeholder="Einde uur" value="23:59">
+                        <label for="endHour">Einde uur</label>
+                        <input type="time" id="endHour" name="endHour" placeholder="Einde uur" value="23:59">
                     </div>
                 </div>
                 <div class="large-12 columns">

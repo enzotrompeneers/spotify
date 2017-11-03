@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Contest;
 use App\User;
 
+use DateTime;
+
+
 use App\Http\Requests\DatumRequest;
 
 class DatumController extends Controller
@@ -40,7 +43,20 @@ class DatumController extends Controller
      */
     public function store(DatumRequest $request)
     {
-        Contest::create($request->all());
+        $dates = $request->all();
+
+        
+        $startDate = $dates['startDate'];
+        $startHour = $dates['startHour'];
+        $endDate = $dates['endDate'];
+        $endHour = $dates['endHour'];
+
+        $startDateTime = new DateTime($startDate . $startHour);
+        $endDateTime = new DateTime($endDate . $endHour);
+
+
+    
+        Contest::create(['startDate' => $startDateTime,  'endDate' => $endDateTime]);
         return redirect()->route('datum.index');
     }
 
