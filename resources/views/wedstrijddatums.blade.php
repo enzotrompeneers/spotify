@@ -10,14 +10,14 @@
                 <table class="datum_table">
                     <tr class="datum_table">
                         <th>id</th>
-                        <th>Start Datum</th>
-                        <th>Einde Datum</th>
+                        <th>Begindatum</th>
+                        <th>Einddatum</th>
                     </tr>
                     @foreach($contests as $contest) 
                         <tr class="datum_table">
                             <td>{{ $contest->id }}</td>
-                            <td>{{ $contest->startDate }}</td>
-                            <td>{{ $contest->endDate }}</td>
+                            <td>{{ Carbon\Carbon::parse($contest->startDate)->format('d/m/Y - h:m') }}</td>
+                            <td>{{ Carbon\Carbon::parse($contest->endDate)->format('d/m/Y - h:m') }}</td>
                         </tr>
                     @endforeach
                 </table>
@@ -34,28 +34,30 @@
                 <div class="large-3 columns">
                     <div class="form-group">
                         <label for="startDate">Start Datum</label>
-                        <input type="date" id="startDate" name="startDate" placeholder="yyyy-mm-dd">
+                        <input type="date" id="startDate" name="startDate" required pattern="date">
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="form-group">
                         <label for="startHour">Start uur</label>
-                        <input type="time" id="startHour" name="startHour" placeholder="Start uur" value="12:00">
+                        <input type="time" id="startHour" name="startHour" required pattern="time">
+                        
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="form-group">
                         <label for="endDate">Einde Datum</label>
-                        <input type="date" id="endDate" name="endDate" placeholder="yyyy-mm-dd">
+                        <input type="date" id="endDate" name="endDate" required pattern="date">
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="form-group">
                         <label for="endHour">Einde uur</label>
-                        <input type="time" id="endHour" name="endHour" placeholder="Einde uur" value="23:59">
+                        <input type="time" id="endHour" name="endHour" required pattern="time">
+                        
                     </div>
                 </div>
                 <div class="large-12 columns">

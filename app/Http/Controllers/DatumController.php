@@ -7,6 +7,8 @@ use App\Contest;
 use App\User;
 
 use DateTime;
+use Carbon\Carbon;
+
 
 
 use App\Http\Requests\DatumRequest;
@@ -20,7 +22,7 @@ class DatumController extends Controller
      */
     public function index()
     {
-        $contests = Contest::all();
+        $contests = Contest::all(); //->format('d/m/Y - h:m:s');
         $admin_email = User::where('isAdmin', '=', 1)->first()->email;
     	return view ('wedstrijddatums', compact('contests', 'admin_email'));
     }
