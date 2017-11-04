@@ -22,9 +22,9 @@ class DatumController extends Controller
      */
     public function index()
     {
-        $contests = Contest::all(); //->format('d/m/Y - h:m:s');
+        $contests = Contest::all();
         $admin_email = User::where('isAdmin', '=', 1)->first()->email;
-    	return view ('wedstrijddatums', compact('contests', 'admin_email'));
+    	return view ('datums.index', compact('contests', 'admin_email'));
     }
 
     /**
@@ -59,7 +59,7 @@ class DatumController extends Controller
 
     
         Contest::create(['startDate' => $startDateTime,  'endDate' => $endDateTime]);
-        return redirect()->route('datum.index');
+        return back()->with('contestCreated', 'Wedstrijddatum aangemaakt!');
     }
 
     /**
@@ -81,7 +81,18 @@ class DatumController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contests = Contest::findOrFail($id);
+
+        $startDateTime = explode(" ", $contests['startDate']);
+        $contests->startDate = $startDateTime[0]; 
+        $contests->startHour = $startDateTime[1]; 
+
+        $endDateTime = explode(" ", $contests['endDate']);
+        $contests->endDate = $endDateTime[0]; 
+        $contests->endHour = $endDateTime[1]; 
+
+        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
+    	return view ('datums.edit', compact('contests', 'admin_email'));
     }
 
     /**
@@ -91,9 +102,21 @@ class DatumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DatumRequest $request, Contest $contest)
     {
-        //
+        $dates = $request->all();
+
+        $startDate = $dates['startDate'];
+        $startHour = $dates['startHour'];
+        $endDate = $dates['endDate'];
+        $endHour = $dates['endHour'];
+
+
+        $startDateTime = new DateTime($startDate . $startHour);
+        $endDateTime = new DateTime($endDate . $endHour);
+
+        $contest->where('id', $dates['id'])->update(['startDate' => $startDateTime,  'endDate' => $endDateTime]);
+        return redirect()->route('datum.index')->with('contestUpdated', 'Wedstrijddatum gewijzigd!');
     }
 
     /**

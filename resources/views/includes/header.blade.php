@@ -10,5 +10,5 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
-<link href='css/app.css' rel='stylesheet' type='text/css'>
+<link href='../../css/app.css' rel='stylesheet' type='text/css'>
 
