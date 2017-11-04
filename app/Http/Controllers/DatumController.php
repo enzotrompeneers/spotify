@@ -125,8 +125,10 @@ class DatumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Contest $contest, $id)
     {
-        //
+        $contest->where('id', $id)->delete();
+
+        return redirect()->route('datum.index')->with('contestDestroyed', 'Wedstrijddatum verwijderd!');
     }
 }

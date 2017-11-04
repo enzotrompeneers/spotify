@@ -390,6 +390,10 @@ th {
   width: 100px;
 }
 
+.action_btn {
+  margin-top: 10px;
+}
+
 h1,
 h2,
 h3,

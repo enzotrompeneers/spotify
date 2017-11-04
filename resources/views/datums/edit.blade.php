@@ -11,8 +11,9 @@
         <div class="row">
             <div class="large-12 columns">
                 <form action="{{ route('datum.update', $contests->id) }}" method="POST">
-                <input type="hidden" name="_method" value="put" />
                     {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+                    
                     <table class="datum_table">
                         <tr class="datum_table">
                             <th class="small_column">ID</th>
