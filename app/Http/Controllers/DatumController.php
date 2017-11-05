@@ -9,8 +9,6 @@ use App\User;
 use DateTime;
 use Carbon\Carbon;
 
-
-
 use App\Http\Requests\DatumRequest;
 
 class DatumController extends Controller
@@ -24,7 +22,8 @@ class DatumController extends Controller
     {
         $contests = Contest::all();
         $admin_email = User::where('isAdmin', '=', 1)->first()->email;
-    	return view ('datums.index', compact('contests', 'admin_email'));
+        return view ('datums.index', compact('contests', 'admin_email'));
+        
     }
 
     /**
@@ -34,7 +33,7 @@ class DatumController extends Controller
      */
     public function create()
     {
-        // already in index
+        // create in index
     }
 
     /**
@@ -70,7 +69,7 @@ class DatumController extends Controller
      */
     public function show($id)
     {
-        //
+        // show all in index
     }
 
     /**

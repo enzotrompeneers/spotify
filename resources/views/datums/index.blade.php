@@ -41,8 +41,8 @@
                         @foreach($contests as $contest) 
                             <tr class="datum_table">
                                 <td>{{ $contest->id }}</td>
-                                <td>{{ Carbon\Carbon::parse($contest->startDate)->format('d/m/Y - h:m') }}</td>
-                                <td>{{ Carbon\Carbon::parse($contest->endDate)->format('d/m/Y - h:m') }}</td>
+                                <td>{{ Carbon\Carbon::parse($contest->startDate)->format('d/m/Y - G:i:s') }}</td>
+                                <td>{{ Carbon\Carbon::parse($contest->endDate)->format('d/m/Y - G:i:s') }}</td>
                                 <td>
                                     <a href="{{ route('datum.edit', $contest->id) }}">
                                         <button type="submit" class="button tiny round action_btn">

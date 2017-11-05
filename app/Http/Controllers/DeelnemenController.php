@@ -6,11 +6,30 @@ use Illuminate\Http\Request;
 use App\Spotify;
 use App\Artist;
 use App\Track;
+use App\Contest;
 
 class DeelnemenController extends Controller
 {
     public function index() {
-        
+        $contest_available = Contest::all();
+        $date_now = date('Y-m-d G:i:s ');
+        $contest_id = 0;
+        $message = "";
+
+        if (!$contest_available->isEmpty()) {
+            foreach($contest_available as $contest) {
+                if ($date_now > $contest['startDate'] && $date_now < $contest['endDate']) {
+                    $contest_id = $contest['id'];
+                    $message = null;
+                    break;
+                } else {
+                    $message = "Momenteel is er geen wedstrijd aan de gang.";
+                }
+            }
+        } else {
+            $message = "Er zijn nog geen wedstrijddatums aangemaakt.";
+        }
+
         $spotify = Spotify::inRandomOrder()->take(2)->get();
 
     	$artists1 = Artist::
@@ -37,8 +56,8 @@ class DeelnemenController extends Controller
         $all_tracks_shuffled = $tracks_from_artist1
             ->merge($tracks_from_artist2)
             ->shuffle();
-			
-    	return view ('deelnemen', compact('artists1', 'artists2', 'tracks_from_artist1', 'tracks_from_artist2', 'all_tracks_shuffled'));
+
+        return view('deelnemen', compact('artists1', 'artists2', 'tracks_from_artist1', 'tracks_from_artist2', 'all_tracks_shuffled', 'message', 'contest_id'));
     }
 
     public function create(Request $request) {

@@ -14,66 +14,75 @@
 	</div>
     @endif
 
-    @if ($user = Auth::user()) 
-    <div class="row">
-		<div class="large-12 columns">
-			<h1>De wedstrijd is gestart!</h1>
-			<p>
-				Het is de bedoeling om de juiste nummers bij de juiste artiest te zetten.
-				Dit doe je door de nummers te <b>slepen</b> naar het juiste vak van de artiest.
-				Succes ermee!
-			</p>
-		</div>
-    	<div class="large-12 columns">
-			<div class="wrap">
-				<form class="form-horizontal" method="GET" action="{{ route('deelnemen.create') }}" data-abide novalidate>
-				{{ csrf_field() }}
-
-				<input type="hidden" name="artist1_tracks" value="">
-				<input type="hidden" name="artist2_tracks" value="">
-
-				<input type="hidden" name="artist1_id" value="{{ $artists1[0]->id }}">
-				<input type="hidden" name="artist2_id" value="{{ $artists2[0]->id }}">
-
-				<div class="box box1 shadow1">
-					
-					<h3>{{ $artists1[0]->name }}</h3>
-					
-					<ul data-draggable="artist1_tracks" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-id="{{ $artists1[0]->id }}" >
-						
-							
-							
-					</ul>
+    @if ($user = Auth::user())
+		@if(isset($message))
+			<div class="row">
+				<div class="large-12 columns">
+					<h1>Helaas</h1>
+					{{ $message}}
 				</div>
-
-				<div class="box box1 shadow1">
-					<h3>Slepen</h3>
-					<ul class="droptarget">
-						@foreach ($all_tracks_shuffled as $track)
-							<li class="track_title" ondragstart="dragStart(event)" draggable="true" data-id="{{ $track->id }}" id="track_{{ $track->id }}">{{ $track->name }}</li>
-						@endforeach
-					</ul>
-					
-				</div>
-
-				
-				<div class="box box1 shadow1">
-					
-					<h3>{{ $artists2[0]->name }}</h3>
-					
-					<ul data-draggable="artist2_tracks" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-id="{{ $artists2[0]->id }}">
-						
-
-					</ul>
-				</div>
-
-				<div class="small-12 columns">
-                    <button type="submit" class="btn_spotify">
-                        Verzenden
-                    </button>
-                </div>
-				</form>
 			</div>
+		@else
+	<div class="row">
+		<div class="large-12 columns">
+				<h1>De wedstrijd is gestart!</h1>
+				<p>
+					Het is de bedoeling om de juiste nummers bij de juiste artiest te zetten.
+					Dit doe je door de nummers te <b>slepen</b> naar het juiste vak van de artiest.
+					Succes ermee!
+				</p>
+			</div>
+			<div class="large-12 columns">
+				<div class="wrap">
+					<form class="form-horizontal" method="GET" action="{{ route('deelnemen.create') }}" data-abide novalidate>
+					{{ csrf_field() }}
+
+					<input type="hidden" name="artist1_tracks" value="">
+					<input type="hidden" name="artist2_tracks" value="">
+
+					<input type="hidden" name="artist1_id" value="{{ $artists1[0]->id }}">
+					<input type="hidden" name="artist2_id" value="{{ $artists2[0]->id }}">
+
+					<div class="box box1 shadow1">
+						
+						<h3>{{ $artists1[0]->name }}</h3>
+						
+						<ul data-draggable="artist1_tracks" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-id="{{ $artists1[0]->id }}" >
+							
+								
+								
+						</ul>
+					</div>
+
+					<div class="box box1 shadow1">
+						<h3>Slepen</h3>
+						<ul class="droptarget">
+							@foreach ($all_tracks_shuffled as $track)
+								<li class="track_title" ondragstart="dragStart(event)" draggable="true" data-id="{{ $track->id }}" id="track_{{ $track->id }}">{{ $track->name }}</li>
+							@endforeach
+						</ul>
+						
+					</div>
+
+					
+					<div class="box box1 shadow1">
+						
+						<h3>{{ $artists2[0]->name }}</h3>
+						
+						<ul data-draggable="artist2_tracks" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-id="{{ $artists2[0]->id }}">
+							
+
+						</ul>
+					</div>
+
+					<div class="small-12 columns">
+						<button type="submit" class="btn_spotify">
+							Verzenden
+						</button>
+					</div>
+					</form>
+				</div>
+			@endif
 		</div> 
 	</div>
     @endif
