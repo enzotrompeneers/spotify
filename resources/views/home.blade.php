@@ -16,22 +16,37 @@
         <hr>
     @endif
 @endif
-
-<div class="row">
-    <div class="large-4 columns">
-        @if(isset($succes_message))
-            <div data-alert class="alert-box success round">
-                {{ $succes_message }}
-                <a href="#" class="close">&times;</a>
+    @if(isset($succes_message))
+        <div class="row">
+            <div class="large-4 columns">
+                <div data-alert class="alert-box success round">
+                    {{ $succes_message }}
+                    <a href="#" class="close">&times;</a>
+                </div>
             </div>
-        @endif
-        <h1>De Winnaars</h1>
-        <ul>
-            <li>Periode 1: test</li>
-            <li>Periode 2: test</li>
-            <li>Periode 3: test</li>
-            <li>Periode 4: test</li>
-        </ul>
+        </div>
+    @endif
+
+    @if(Session::has('participationOver'))
+        <div class="row">
+            <div class="large-6 columns">
+                <div data-alert class="alert-box success round">
+                    {{ Session::get('participationOver') }}
+                    <a href="#" class="close">&times;</a>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    <div class="row">
+        <div class="large-4 columns">
+            <h1>De Winnaars</h1>
+            <ul>
+                <li>Periode 1: test</li>
+                <li>Periode 2: test</li>
+                <li>Periode 3: test</li>
+                <li>Periode 4: test</li>
+            </ul>
+        </div>
     </div>
-</div>
 @stop

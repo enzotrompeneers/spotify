@@ -108,6 +108,6 @@ class DeelnemenController extends Controller
 
         Participation::create(['points' => $points,  'user_id' => $auth_id, 'contest_id' => $contest_id]);
 
-        return back();
+        return redirect()->route('home')->with('participationOver', 'De wedstrijd is afgelopen, bedankt om mee te spelen!');
     }
 }
