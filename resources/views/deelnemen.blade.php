@@ -34,7 +34,7 @@
 			</div>
 			<div class="large-12 columns">
 				<div class="wrap">
-					<form class="form-horizontal" method="GET" action="{{ route('deelnemen.create') }}" data-abide novalidate>
+					<form class="form-horizontal" method="GET" action="{{ route('deelnemen.create', $contest_id)}}" data-abide novalidate>
 					{{ csrf_field() }}
 
 					<input type="hidden" name="artist1_tracks" value="">
@@ -46,11 +46,8 @@
 					<div class="box box1 shadow1">
 						
 						<h3>{{ $artists1[0]->name }}</h3>
-						
 						<ul data-draggable="artist1_tracks" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-id="{{ $artists1[0]->id }}" >
 							
-								
-								
 						</ul>
 					</div>
 
@@ -61,17 +58,12 @@
 								<li class="track_title" ondragstart="dragStart(event)" draggable="true" data-id="{{ $track->id }}" id="track_{{ $track->id }}">{{ $track->name }}</li>
 							@endforeach
 						</ul>
-						
 					</div>
-
 					
 					<div class="box box1 shadow1">
-						
 						<h3>{{ $artists2[0]->name }}</h3>
-						
 						<ul data-draggable="artist2_tracks" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-id="{{ $artists2[0]->id }}">
 							
-
 						</ul>
 					</div>
 

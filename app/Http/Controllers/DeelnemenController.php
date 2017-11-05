@@ -7,6 +7,8 @@ use App\Spotify;
 use App\Artist;
 use App\Track;
 use App\Contest;
+use App\Participation;
+use Illuminate\Support\Facades\Auth;
 
 class DeelnemenController extends Controller
 {
@@ -60,7 +62,8 @@ class DeelnemenController extends Controller
         return view('deelnemen', compact('artists1', 'artists2', 'tracks_from_artist1', 'tracks_from_artist2', 'all_tracks_shuffled', 'message', 'contest_id'));
     }
 
-    public function create(Request $request) {
+    public function create(Request $request, $contest_id) {
+        $auth_id = Auth::id();
         $artist1_id = $request->get("artist1_id");
         $artist2_id = $request->get("artist2_id");
     
@@ -79,7 +82,7 @@ class DeelnemenController extends Controller
         ->pluck('name')
         ->toArray(); 
 
-        $points = 10;
+        $points = 0;
 
         if(isset($artist1_tracks)) {
             foreach($artist1_tracks as $track) {
@@ -103,6 +106,8 @@ class DeelnemenController extends Controller
             }
         }
 
-        var_dump(compact('points'));die;
+        Participation::create(['points' => $points,  'user_id' => $auth_id, 'contest_id' => $contest_id]);
+
+        return back();
     }
 }
