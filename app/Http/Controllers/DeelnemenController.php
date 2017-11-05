@@ -62,7 +62,7 @@ class DeelnemenController extends Controller
         return view('deelnemen', compact('artists1', 'artists2', 'tracks_from_artist1', 'tracks_from_artist2', 'all_tracks_shuffled', 'message', 'contest_id'));
     }
 
-    public function create(Request $request, $contest_id) {
+    public function store(Request $request, $contest_id) {
         $auth_id = Auth::id();
         $artist1_id = $request->get("artist1_id");
         $artist2_id = $request->get("artist2_id");
