@@ -40,12 +40,18 @@
 
     <div class="row">
         <div class="large-12 columns">
-            <h1>Highscore van de lopende wedstrijd</h1>
-            <ul>
-                @foreach($participants as $participant)
-                    <li>Punten: {{ $participant['points'] }}, User_id: {{ $participant['user_id'] }} </li>
-                @endforeach
-            <ul>
+            @if(isset($participants))
+                <h1>Highscore van de lopende wedstrijd</h1>
+                <ul>
+                    @foreach($participants as $participant)
+                        <li>Punten: {{ $participant['points'] }}, User_id: {{ $participant['user_id'] }} </li>
+                    @endforeach
+                <ul>
+            @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
             <h1>De Winnaars</h1>
             <ul>
                 <li>Periode 1: test</li>
