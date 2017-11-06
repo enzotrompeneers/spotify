@@ -11,11 +11,14 @@ class HomeController extends Controller
     public function index() {
         $admin_email = User::where('isAdmin', 1)->value('email');
 
-        $max = Participation::max('points');
-        echo $max;
+        $max_points = Participation::max('points');
+        $user_id = Participation::where('points' , $max_points)->first()->value('user_id');
+        $user_name = User::where('id', $user_id)->value('name');
 
+        $participants = Participation::orderBy('points', 'DESC')->get();
         
 
-        return view('home', compact('admin_email'));
+        echo $user_name;
+        return view('home', compact('admin_email', 'participants'));
     }
 }

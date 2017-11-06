@@ -64,6 +64,8 @@ class DeelnemenController extends Controller
 
     public function store(Request $request, $contest_id) {
         $auth_id = Auth::id();
+        $points = 0;
+        $current_points = 0;
         $participation_over = "De wedstrijd is afgelopen, bedankt om mee te spelen! Je behaalde een score van:  ";
         $artist1_id = $request->get("artist1_id");
         $artist2_id = $request->get("artist2_id");
@@ -82,8 +84,6 @@ class DeelnemenController extends Controller
         ->get()
         ->pluck('name')
         ->toArray(); 
-
-        $points = 0;
 
         if(isset($artist1_tracks)) {
             foreach($artist1_tracks as $track) {
@@ -107,8 +107,9 @@ class DeelnemenController extends Controller
             }
         }
 
-        Participation::create(['points' => $points,  'user_id' => $auth_id, 'contest_id' => $contest_id]);
-
+        $current_points = Participation::where(['user_id' => $auth_id, 'contest_id' => $contest_id])->value('points');
+        Participation::updateOrCreate(['user_id' => $auth_id, 'contest_id' => $contest_id], ['points' => $current_points + $points]);
+        
         return redirect()->route('home')->with('participationOver', $participation_over . $points);
     }
 }
