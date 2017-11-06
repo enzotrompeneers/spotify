@@ -64,6 +64,7 @@ class DeelnemenController extends Controller
 
     public function store(Request $request, $contest_id) {
         $auth_id = Auth::id();
+        $participation_over = "De wedstrijd is afgelopen, bedankt om mee te spelen! Je behaalde een score van:  ";
         $artist1_id = $request->get("artist1_id");
         $artist2_id = $request->get("artist2_id");
     
@@ -108,6 +109,6 @@ class DeelnemenController extends Controller
 
         Participation::create(['points' => $points,  'user_id' => $auth_id, 'contest_id' => $contest_id]);
 
-        return redirect()->route('home')->with('participationOver', 'De wedstrijd is afgelopen, bedankt om mee te spelen!');
+        return redirect()->route('home')->with('participationOver', $participation_over . $points);
     }
 }

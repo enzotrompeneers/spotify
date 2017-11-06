@@ -5,7 +5,7 @@
 
 <hr>
 @if (Auth::user())
-    @if (Auth::user()->email == $admin[0])
+    @if (Auth::user()->email == $admin_email)
         <div class="row">
             <div class="large-12 columns">
                 <h1>Admin</h1>
@@ -29,7 +29,7 @@
 
     @if(Session::has('participationOver'))
         <div class="row">
-            <div class="large-6 columns">
+            <div class="large-8 columns">
                 <div data-alert class="alert-box success round">
                     {{ Session::get('participationOver') }}
                     <a href="#" class="close">&times;</a>

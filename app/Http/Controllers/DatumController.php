@@ -21,7 +21,7 @@ class DatumController extends Controller
     public function index()
     {
         $contests = Contest::all();
-        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
+        $admin_email = User::where('isAdmin', 1)->value('email');
         return view ('datums.index', compact('contests', 'admin_email'));
         
     }
@@ -80,6 +80,7 @@ class DatumController extends Controller
      */
     public function edit($id)
     {
+        $admin_email = User::where('isAdmin', 1)->value('email');
         $contests = Contest::findOrFail($id);
 
         $startDateTime = explode(" ", $contests['startDate']);
@@ -90,7 +91,7 @@ class DatumController extends Controller
         $contests->endDate = $endDateTime[0]; 
         $contests->endHour = $endDateTime[1]; 
 
-        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
+        
     	return view ('datums.edit', compact('contests', 'admin_email'));
     }
 

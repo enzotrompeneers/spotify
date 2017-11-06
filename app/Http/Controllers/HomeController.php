@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Participation;
 
 class HomeController extends Controller
 {
     public function index() {
-        $admin = User::
-        where('isAdmin', 1)
-        ->get()
-        ->pluck('email')
-        ->toArray();
+        $admin_email = User::where('isAdmin', 1)->value('email');
 
+        $max = Participation::max('points');
+        echo $max;
 
-        return view('home', compact('admin'));
+        
+
+        return view('home', compact('admin_email'));
     }
 }
