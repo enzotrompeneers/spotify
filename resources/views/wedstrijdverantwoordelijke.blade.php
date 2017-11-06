@@ -6,12 +6,12 @@
     @if (Auth::user()->email == $admin_email)
     <form class="form-horizontal" method="POST" action="{{ route('wedstrijdverantwoordelijke.update') }}" data-abide novalidate enctype="multipart/form-data">
         {{ csrf_field() }}
-        
+        {{ method_field('PUT') }}
         <div class="row">
             <div class="small-12 columns{{ $errors->has('email') ? ' has-error' : '' }}">
                 <div class="call_to_action_wrapper">
                     <h1>Wedstrijdverantwoordelijke</h1>
-                        <input type="text" placeholder="naam@email.com" pattern="email" name="email" value="{{ $admin[0] }}">
+                        <input type="text" placeholder="naam@email.com" pattern="email" name="email" value="{{ $admin_email }}">
                         @if ($errors->has('email'))
                             <strong>{{ $errors->first('email') }}</strong>
                         @endif

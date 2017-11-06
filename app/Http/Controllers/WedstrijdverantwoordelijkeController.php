@@ -8,28 +8,15 @@ use App\User;
 class WedstrijdverantwoordelijkeController extends Controller
 {
     public function index() {
-        $admin = User::
-        where('isAdmin', 1)
-        ->get()
-        ->pluck('email')
-        ->toArray();
-
-        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
+        $admin_email = User::where('isAdmin', 1)->value('email');
         
-        
-         return view('wedstrijdverantwoordelijke', compact('admin', 'admin_email'));
+         return view('wedstrijdverantwoordelijke', compact('admin_email'));
     }
 
     public function update(Request $request) {
-        $admin = User::
-        where('isAdmin', 1)
-        ->get()
-        ->pluck('email')
-        ->toArray();
+        $admin_email = User::where('isAdmin', 1)->value('email');
 
-        
         $email = $request->get("email");
-        $admin_email = User::where('isAdmin', '=', 1)->first()->email;
         
         $email_exist = false;
 
@@ -51,11 +38,11 @@ class WedstrijdverantwoordelijkeController extends Controller
                     
                 $admin = false;
                 $succes_message = "De wedstrijdverantwoordelijke is gewijzigd.";
-                return view('home', compact('admin','succes_message'));
+                return view('home', compact('admin_email','succes_message'));
             }
             
          }
-         return view('wedstrijdverantwoordelijke', compact('admin', 'email_exist', 'succes_message', 'admin_email'));
+         return view('wedstrijdverantwoordelijke', compact('email_exist', 'succes_message', 'admin_email'));
          
 
        

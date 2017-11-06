@@ -11,6 +11,7 @@
                 <h1>Admin</h1>
                 <a class="btn_spotify" href="{{ route('wedstrijdverantwoordelijke.index') }}">Toon Wedstrijdverantwoordelijke</a>
                 <a class="btn_spotify" href="{{ route('datum.index') }}">Toon Wedstrijddatums</a>
+                <a class="btn_spotify" href="{{ route('deelnemers.index') }}">Toon Deelnemers</a>
             </div>
         </div>
         <hr>
@@ -49,12 +50,14 @@
                         <th>Naam</th>
                         <th>Punten</th>
                     </tr>
-                    @foreach($participants as $index => $participant) 
-                        <tr class="datum_table">
-                            <td>{{ $index+1 }}</td>
-                            <td>{{ $users[$participant['user_id']-1]->name }}</td>
-                            <td>{{ $participant['points'] }}</td>
-                        </tr>
+                    <?php $n = 0; ?>
+                    @foreach($participants as $participant) 
+                    <tr>
+                        <?php $n++; ?>
+                        <td>{{ $n }}</td>
+                        <td>{{ $participant->user->name }}</td>
+                        <td>{{ $participant->points }}</td>
+                    </tr>
                     @endforeach
                 </table>
             @endif

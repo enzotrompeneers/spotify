@@ -115,7 +115,7 @@ class DatumController extends Controller
         $startDateTime = new DateTime($startDate . $startHour);
         $endDateTime = new DateTime($endDate . $endHour);
 
-        $contest->where('id', $dates['id'])->update(['startDate' => $startDateTime,  'endDate' => $endDateTime]);
+        $contest->find($id)->update(['startDate' => $startDateTime,  'endDate' => $endDateTime]);
         return redirect()->route('datum.index')->with('contestUpdated', 'Wedstrijddatum gewijzigd!');
     }
 
@@ -127,7 +127,7 @@ class DatumController extends Controller
      */
     public function destroy(Contest $contest, $id)
     {
-        $contest->where('id', $id)->delete();
+        $contest->find($id)->delete();
 
         return redirect()->route('datum.index')->with('contestDestroyed', 'Wedstrijddatum verwijderd!');
     }
