@@ -39,14 +39,24 @@
     @endif
 
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-8 columns">
             @if(isset($participants))
                 <h1>Highscore van de lopende wedstrijd</h1>
-                <ul>
-                    @foreach($participants as $participant)
-                        <li>Punten: {{ $participant['points'] }}, User_id: {{ $participant['user_id'] }} </li>
+
+                <table class="datum_table">
+                    <tr class="datum_table">
+                        <th>Rank</th>
+                        <th>Naam</th>
+                        <th>Punten</th>
+                    </tr>
+                    @foreach($participants as $index => $participant) 
+                        <tr class="datum_table">
+                            <td>{{ $index+1 }}</td>
+                            <td>{{ $users[$participant['user_id']-1]->name }}</td>
+                            <td>{{ $participant['points'] }}</td>
+                        </tr>
                     @endforeach
-                <ul>
+                </table>
             @endif
         </div>
     </div>

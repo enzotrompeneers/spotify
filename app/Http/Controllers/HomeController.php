@@ -16,12 +16,14 @@ class HomeController extends Controller
             $user_id = Participation::where('points' , $max_points)->first()->value('user_id');
             $user_name = User::where('id', $user_id)->value('name');
             $participants = Participation::orderBy('points', 'DESC')->get();
+            $users = User::all();
+
         } else {
             $participants = null;
         }
         
         
 
-        return view('home', compact('admin_email', 'participants'));
+        return view('home', compact('admin_email', 'participants', 'users'));
     }
 }

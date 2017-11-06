@@ -108,8 +108,9 @@ class DeelnemenController extends Controller
         }
 
         $current_points = Participation::where(['user_id' => $auth_id, 'contest_id' => $contest_id])->value('points');
-        Participation::updateOrCreate(['user_id' => $auth_id, 'contest_id' => $contest_id], ['points' => $current_points + $points]);
-        
-        return redirect()->route('home')->with('participationOver', $participation_over . $points);
+        $total_points = $current_points + $points;
+        Participation::updateOrCreate(['user_id' => $auth_id, 'contest_id' => $contest_id], ['points' => $total_points]);
+
+        return redirect()->route('home')->with('participationOver', $participation_over . $points . '. Totale score: ' . $total_points);
     }
 }
