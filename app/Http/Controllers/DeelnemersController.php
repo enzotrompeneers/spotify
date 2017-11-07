@@ -22,6 +22,6 @@ class DeelnemersController extends Controller
         if(!$user) return redirect()->back();
         $user->delete();
 
-        return redirect()->back()->with('userDisqualified', 'Je hebt een persoon gedisqualificeerd.');
+        return back()->with('userDisqualified', 'Je hebt een persoon gedisqualificeerd.');
     }
 }

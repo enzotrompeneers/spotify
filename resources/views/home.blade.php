@@ -43,8 +43,7 @@
 <div class="row">
     <div class="large-8 columns">
         @if($participants)
-            <h1>Highscore van de lopende wedstrijd</h1>
-
+            <h1>Highscore - Top 10</h1>
             <table class="datum_table">
                 <tr class="datum_table">
                     <th>Rank</th>

@@ -8,13 +8,13 @@ use App\User;
 class WedstrijdverantwoordelijkeController extends Controller
 {
     public function index() {
-        $admin_email = User::where('isAdmin', '=', 1)->value('email');
+        $admin_email = User::where('isAdmin', 1)->value('email');
         
          return view('wedstrijdverantwoordelijke', compact('admin_email'));
     }
 
     public function update(Request $request) {
-        $admin_email = User::where('isAdmin', '=', 1)->value('email');
+        $admin_email = User::where('isAdmin', 1)->value('email');
 
         $email = $request->get("email");
         
