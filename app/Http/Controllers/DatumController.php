@@ -21,7 +21,7 @@ class DatumController extends Controller
     public function index()
     {
         $contests = Contest::all();
-        $admin_email = User::where('isAdmin', 1)->value('email');
+        $admin_email = User::where('isAdmin', '=', 1)->value('email');
         return view ('datums.index', compact('contests', 'admin_email'));
         
     }
@@ -80,7 +80,7 @@ class DatumController extends Controller
      */
     public function edit($id)
     {
-        $admin_email = User::where('isAdmin', 1)->value('email');
+        $admin_email = User::where('isAdmin', '=', 1)->value('email');
         $contests = Contest::findOrFail($id);
 
         $startDateTime = explode(" ", $contests['startDate']);

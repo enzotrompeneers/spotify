@@ -10,26 +10,18 @@ class DeelnemersController extends Controller
 {
     public function index () {
         $admin_email = User::where('isAdmin', 1)->value('email');
-        
-        $max_points = Participation::max('points');
-        if ($max_points) {
-            $user_id = Participation::where('points' , $max_points)->first()->value('user_id');
-            $user_name = User::where('id', $user_id)->value('name');
-            $participants = Participation::orderBy('points', 'DESC')->get();
-            $users = User::all();
+        $participants = Participation::with(['user'])->has('user')->orderBy('points', 'desc')->get();
 
-        } else {
-            $participants = null;
-        }
-                
-        echo $users['0']->id; 
-        return view('deelnemers', compact('admin_email', 'participants', 'users'));
+        
+        return view('deelnemers', compact('admin_email', 'participants'));
 
     }
 
     public function destroy ($id) {
         $user = User::find($id);
+        if(!$user) return redirect()->back();
         $user->delete();
-        return back()->with('userDisqualified', 'Je hebt een persoon gedisqualificeerd.');
+
+        return redirect()->back()->with('userDisqualified', 'Je hebt een persoon gedisqualificeerd.');
     }
 }

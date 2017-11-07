@@ -9,7 +9,7 @@ Route::get('deelnemen', 'DeelnemenController@index')->name('deelnemen.index');
 Route::post('deelnemen/store/{contest_id}', 'DeelnemenController@store')->name('deelnemen.store');
 
 Route::get('deelnemers', 'DeelnemersController@index')->name('deelnemers.index');
-Route::delete('deelnemers', 'DeelnemersController@destroy')->name('deelnemers.destroy');
+Route::delete('deelnemers/{id}', 'DeelnemersController@destroy')->name('deelnemers.destroy');
 
 Route::get('wedstrijdverantwoordelijke', 'WedstrijdverantwoordelijkeController@index')->name('wedstrijdverantwoordelijke.index');
 Route::put('wedstrijdverantwoordelijke', 'WedstrijdverantwoordelijkeController@update')->name('wedstrijdverantwoordelijke.update');

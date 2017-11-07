@@ -17,61 +17,64 @@
         <hr>
     @endif
 @endif
-    @if(isset($succes_message))
-        <div class="row">
-            <div class="large-4 columns">
-                <div data-alert class="alert-box success round">
-                    {{ $succes_message }}
-                    <a href="#" class="close">&times;</a>
-                </div>
+
+@if(isset($succes_message))
+    <div class="row">
+        <div class="large-4 columns">
+            <div data-alert class="alert-box success round">
+                {{ $succes_message }}
+                <a href="#" class="close">&times;</a>
             </div>
         </div>
-    @endif
+    </div>
+@endif
 
-    @if(Session::has('participationOver'))
-        <div class="row">
-            <div class="large-8 columns">
-                <div data-alert class="alert-box success round">
-                    {{ Session::get('participationOver') }}
-                    <a href="#" class="close">&times;</a>
-                </div>
-            </div>
-        </div>
-    @endif
-
+@if(Session::has('participationOver'))
     <div class="row">
         <div class="large-8 columns">
-            @if(isset($participants))
-                <h1>Highscore van de lopende wedstrijd</h1>
+            <div data-alert class="alert-box success round">
+                {{ Session::get('participationOver') }}
+                <a href="#" class="close">&times;</a>
+            </div>
+        </div>
+    </div>
+@endif
 
-                <table class="datum_table">
-                    <tr class="datum_table">
-                        <th>Rank</th>
-                        <th>Naam</th>
-                        <th>Punten</th>
-                    </tr>
-                    <?php $n = 0; ?>
-                    @foreach($participants as $participant) 
+<div class="row">
+    <div class="large-8 columns">
+        @if($participants)
+            <h1>Highscore van de lopende wedstrijd</h1>
+
+            <table class="datum_table">
+                <tr class="datum_table">
+                    <th>Rank</th>
+                    <th>Naam</th>
+                    <th>Punten</th>
+                </tr>
+
+                <?php $n = 0; ?>
+                @foreach($participants as $participant) 
                     <tr>
                         <?php $n++; ?>
                         <td>{{ $n }}</td>
                         <td>{{ $participant->user->name }}</td>
                         <td>{{ $participant->points }}</td>
                     </tr>
-                    @endforeach
-                </table>
-            @endif
-        </div>
+                @endforeach
+            </table>
+        @endif
     </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <h1>De Winnaars</h1>
-            <ul>
-                <li>Periode 1: test</li>
-                <li>Periode 2: test</li>
-                <li>Periode 3: test</li>
-                <li>Periode 4: test</li>
-            </ul>
-        </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>De Winnaars</h1>
+        <ul>
+            <li>Periode 1: test</li>
+            <li>Periode 2: test</li>
+            <li>Periode 3: test</li>
+            <li>Periode 4: test</li>
+        </ul>
     </div>
+</div>
+
 @stop
