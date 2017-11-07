@@ -44,27 +44,21 @@ class emailAdmin extends Command
     {
         //check only the contest that is active (change in db)
         echo "Command emailAdmin started...\n";
-        $admin_email = User::where('isAdmin', 1)->value('email');
 
-        $contest_available = Contest::all();
+        $admin_email = User::where('isAdmin', 1)->value('email');
+        $active_contest = Contest::where('isActive', 1)->first();
         $date_now = date('Y-m-d G:i:s ');
 
-        $contest_id = 0;
+        if ($date_now > $active_contest['endDate']) {
+            $contest_id = $active_contest['id'];
 
-        if (!$contest_available->isEmpty()) {
-            foreach($contest_available as $contest) {
-                if ($date_now > $contest['endDate']) {
-                    $contest_id = $contest['id'];
+            $active_contest->isActive = 0;
+            $active_contest->save();
 
-                    $participants = Participation::with(['user'])->has('user')->orderBy('points', 'desc')->take(1)->get();
-                    $winner_email = $participants[0]->user->email;
-                    Mail::to($admin_email)->send(new sendAdmin($winner_email));
-
-                    break;
-                } 
-            }
+            $participants = Participation::where('contest_id', $contest_id)->with(['user'])->has('user')->orderBy('points', 'desc')->take(1)->get();
+            $winner_email = $participants[0]->user->email;
+            Mail::to($admin_email)->send(new sendAdmin($winner_email));
         }
         echo "Command emailAdmin DONE\n";
-
     }
 }

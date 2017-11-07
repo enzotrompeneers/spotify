@@ -102,7 +102,7 @@ class DatumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DatumRequest $request, Contest $contest)
+    public function update(DatumRequest $request, Contest $contest, $id)
     {
         $dates = $request->all();
 

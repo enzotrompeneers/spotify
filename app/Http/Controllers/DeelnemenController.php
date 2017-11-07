@@ -22,6 +22,11 @@ class DeelnemenController extends Controller
             foreach($contest_available as $contest) {
                 if ($date_now > $contest['startDate'] && $date_now < $contest['endDate']) {
                     $contest_id = $contest['id'];
+
+                    $active_contest = Contest::where('id', '=', $contest_id)->first();
+                    $active_contest->isActive = 1;
+                    $active_contest->save();
+                    
                     $message = null;
                     break;
                 } else {
