@@ -40,10 +40,14 @@
     </div>
 @endif
 
-<div class="row">
-    <div class="large-8 columns">
-        @if($participants)
-            <h1>Highscore - Top 10</h1>
+@if($participants)
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Highscore - Top 10 van de lopende wedstrijd</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 columns">
             <table class="datum_table">
                 <tr class="datum_table">
                     <th>Rank</th>
@@ -61,9 +65,10 @@
                     </tr>
                 @endforeach
             </table>
-        @endif
+        </div>
     </div>
-</div>
+@endif
+
 <div class="row">
     <div class="large-12 columns">
         <h1>De Winnaars</h1>
