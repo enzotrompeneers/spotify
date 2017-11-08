@@ -70,9 +70,8 @@ class RegisterController extends Controller
 
 
         $first_user = User::where('isAdmin', 1)->first();
-        echo 'first user is: '.$first_user;
         if (!$first_user) {
-            //var_dump(compact());die;
+            var_dump(compact('first_user'));die;
             return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
