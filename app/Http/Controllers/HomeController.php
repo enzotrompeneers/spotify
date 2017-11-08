@@ -16,10 +16,11 @@ class HomeController extends Controller
         if(!$active_contest) {
             $participants = null;
             $winners = null;
-            return view('home', compact('admin_email', 'participants'));
+            return view('home', compact('admin_email', 'participants', 'winners'));
         }
         $contest_id = $active_contest->id;
-        $participants = Participation::where('contest_id', $contest_id)->with(['user'])->has('user')->orderBy('points', 'desc')->take(10)->get();   
+        $participants = Participation::where('contest_id', $contest_id)->with(['user'])->has('user')->orderBy('points', 'desc')->take(10)->get();
+        
         
         $inactive_contests = Contest::where('isActive', 0)->first();
         $inactive_contests_id = $inactive_contests->id;
