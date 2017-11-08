@@ -16,6 +16,7 @@
                         <div class="large-12 columns">
                             @if($participants)
                                 <h1>Lijst deelnemers</h1>
+                                <p>Gerangschikt op <b>contest ID</b>, Onder contest ID gerangschikt op <b>punten</b>.</p>
                                 <table class="datum_table">
                                     <tr class="datum_table">
                                         <th>Rank</th>
