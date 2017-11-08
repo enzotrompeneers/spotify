@@ -5,4 +5,5 @@
 #|-|-|-|-|------------------------------------- day of week (0 - 6) (0 to 6 are Sunday to Saturday)
 #* * * * * command to execute
 
-* * * * * php /mnt/hgfs/web_development/spotify.dev/artisan schedule:run >> /dev/null 2>&1
+#* * * * * php /mnt/hgfs/web_development/spotify.dev/artisan schedule:run >> /dev/null 2>&1
+#* * * * * php /mnt/hgfs/web_development/spotify/artisan schedule:run >> /mnt/hgfs/web_development/spotify.dev/crontab.log

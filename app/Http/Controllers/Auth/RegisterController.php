@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
+            'isAdmin' => 'boolean',
         ]);
     }
 
@@ -67,13 +68,29 @@ class RegisterController extends Controller
     {
         $ipaddress = $_SERVER['REMOTE_ADDR'];
 
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'address' => $data['address'],
-            'city' => $data['city'],
-            'ipaddress'=> $ipaddress
-        ]);
+
+        $first_user = User::where('isAdmin', 1)->first();
+        echo 'first user is: '.$first_user;
+        if (!$first_user) {
+            //var_dump(compact());die;
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'ipaddress'=> $ipaddress,
+                'isAdmin' => 1,
+            ]);
+        } else {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'ipaddress'=> $ipaddress
+            ]);
+        }
     }
 }

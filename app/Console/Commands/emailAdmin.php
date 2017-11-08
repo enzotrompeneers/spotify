@@ -47,7 +47,7 @@ class emailAdmin extends Command
 
         $admin_email = User::where('isAdmin', 1)->value('email');
         $active_contest = Contest::where('isActive', 1)->first();
-        $date_now = date('Y-m-d G:i:s ');
+        $date_now = date('Y-m-d G:i:s');
 
         if ($date_now > $active_contest['endDate']) {
             $contest_id = $active_contest['id'];

@@ -1,0 +1,13 @@
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+Running scheduled command: '/usr/bin/php7.0' 'artisan' email:admin > '/dev/null' 2>&1
+
+                                   
+  [BadMethodCallException]         
+  Method everyDay does not exist.  
+                                   
+
