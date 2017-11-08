@@ -73,7 +73,7 @@
         <div class="large-6 columns">
             <table class="datum_table">
                 <tr class="datum_table">
-                    <th>Contest ID</th>
+                    <th>Wedstrijd Nr.</th>
                     <th>Naam</th>
                     <th>Punten</th>
                 </tr>
@@ -83,7 +83,7 @@
                         <?php $n++; ?>
                         <td>{{ $winner->contest_id }}</td>
                         <td>{{ $winner->user->name }}</td>
-                        <td>{{ $participant->points }}</td>
+                        <td>{{ $winner->points }}</td>
                     </tr>
                 @endforeach
             </table>
