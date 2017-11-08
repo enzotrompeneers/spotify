@@ -15,6 +15,7 @@ class HomeController extends Controller
         
         if(!$active_contest) {
             $participants = null;
+            $winners = null;
             return view('home', compact('admin_email', 'participants'));
         }
         $contest_id = $active_contest->id;
