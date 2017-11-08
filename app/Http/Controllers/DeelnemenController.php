@@ -41,6 +41,7 @@ class DeelnemenController extends Controller
             }
         } else {
             $message = "Er zijn nog geen wedstrijddatums aangemaakt.";
+            return view('deelnemen', compact('message'));
         }
 
         $spotify = Spotify::inRandomOrder()->take(2)->get();
