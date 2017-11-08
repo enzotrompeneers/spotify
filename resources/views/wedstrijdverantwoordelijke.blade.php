@@ -8,27 +8,25 @@
         {{ csrf_field() }}
         {{ method_field('PUT') }}
         <div class="row">
-            <div class="small-12 columns{{ $errors->has('email') ? ' has-error' : '' }}">
-                <div class="call_to_action_wrapper">
-                    <h1>Wedstrijdverantwoordelijke</h1>
-                        <input type="text" placeholder="naam@email.com" pattern="email" name="email" value="{{ $admin_email }}">
-                        @if ($errors->has('email'))
-                            <strong>{{ $errors->first('email') }}</strong>
-                        @endif
-                        <small class="error">Geef een geldig e-mail adres</small>
+            <div class="small-6 large-centered columns"{{ $errors->has('email') ? ' has-error' : '' }}">
+                <h1>Wedstrijdverantwoordelijke</h1>
+                    <input type="text" placeholder="naam@email.com" pattern="email" name="email" value="{{ $admin_email }}">
+                    @if ($errors->has('email'))
+                        <strong>{{ $errors->first('email') }}</strong>
+                    @endif
+                    <small class="error">Geef een geldig e-mail adres</small>
 
-                        @if(isset($email_exist))
-                            @if(!$email_exist)
-                                <div data-alert class="alert-box alert round">
-                                    Wedstrijdverantwoordelijke is niet geregistreerd (niet gevonden).
-                                    <a href="#" class="close">&times;</a>
-                                </div>
-                            @endif
+                    @if(isset($email_exist))
+                        @if(!$email_exist)
+                            <div data-alert class="alert-box alert round">
+                                Wedstrijdverantwoordelijke is niet geregistreerd (niet gevonden).
+                                <a href="#" class="close">&times;</a>
+                            </div>
                         @endif
-                    <button type="submit" class="btn_spotify ">
-                        Wijzigen
-                    </button>
-                </div>
+                    @endif
+                <button type="submit" class="btn_spotify ">
+                    Wijzigen
+                </button>
             </div>
         </div>
     </form>

@@ -16,13 +16,15 @@ class DeelnemenController extends Controller
     public function index() {
         $admin_email = User::where('isAdmin', 1)->value('email');
         $contest_available = Contest::all();
-        $date_now = date('Y-m-d G:i:s ');
+        $date_now = date('Y-m-d G:i:s');
         $contest_id = 0;
         $message = "";
 
         if (!$contest_available->isEmpty()) {
             foreach($contest_available as $contest) {
-                if ($date_now > $contest['startDate'] && $date_now < $contest['endDate']) {
+                echo "Date_now: ".$date_now . " StartDate" . $contest['startDate'] . " endDate: " . $contest['endDate'] . '//////////////NEXT//////';
+                if ($date_now >= $contest['startDate'] && $date_now <= $contest['endDate']) {
+                   
                     $contest_id = $contest['id'];
 
                     $active_contest = Contest::where('id', '=', $contest_id)->first();
@@ -33,6 +35,7 @@ class DeelnemenController extends Controller
                     break;
                 } else {
                     $message = "Momenteel is er geen wedstrijd aan de gang.";
+                    
                 }
             }
         } else {
