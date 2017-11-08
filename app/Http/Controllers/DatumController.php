@@ -55,7 +55,18 @@ class DatumController extends Controller
         $startDateTime = new DateTime($startDate . $startHour);
         $endDateTime = new DateTime($endDate . $endHour);
 
+        $contests = Contest::all();
+        foreach($contests as $contest) {
+            $contest_endDate = $contest->endDate;
+            
+            //var_dump(compact('startDateTime', 'contest_endDate'));die;
+            if($startDateTime < $contest->endDate) {
+                
+                return back()->with('contestError', 'Wedstrijddatums mogen niet door elkaar gaan!');
+            }
+        }
 
+        
     
         Contest::create(['startDate' => $startDateTime,  'endDate' => $endDateTime]);
         return back()->with('contestCreated', 'Wedstrijddatum aangemaakt!');

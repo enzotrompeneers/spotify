@@ -22,12 +22,12 @@ class DeelnemenController extends Controller
 
         if (!$contest_available->isEmpty()) {
             foreach($contest_available as $contest) {
-                echo "Date_now: ".$date_now . " StartDate" . $contest['startDate'] . " endDate: " . $contest['endDate'] . '//////////////NEXT//////';
+                $contest_id = $contest['id'];
+                
+                $active_contest = Contest::where('id', '=', $contest_id)->first();
                 if ($date_now >= $contest['startDate'] && $date_now <= $contest['endDate']) {
                    
-                    $contest_id = $contest['id'];
-
-                    $active_contest = Contest::where('id', '=', $contest_id)->first();
+                    
                     $active_contest->isActive = 1;
                     $active_contest->save();
                     
@@ -35,7 +35,8 @@ class DeelnemenController extends Controller
                     break;
                 } else {
                     $message = "Momenteel is er geen wedstrijd aan de gang.";
-                    
+                    $active_contest->isActive = 0;
+                    $active_contest->save();
                 }
             }
         } else {

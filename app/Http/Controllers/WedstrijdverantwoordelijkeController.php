@@ -38,7 +38,7 @@ class WedstrijdverantwoordelijkeController extends Controller
                     
                 $admin = false;
                 $succes_message = "De wedstrijdverantwoordelijke is gewijzigd.";
-                return view('home', compact('admin_email','succes_message'));
+                return redirect()->route('home', compact('admin_email','succes_message'));
             }
             
          }

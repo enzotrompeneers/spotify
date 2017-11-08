@@ -5,6 +5,18 @@
 @if (Auth::user())
     @if (Auth::user()->email == $admin_email)
         @if (!$contests->isEmpty())
+
+            @if(Session::has('contestError'))
+                <div class="row">
+                    <div class="large-8 columns">
+                        <div data-alert class="alert-box alert round">
+                            {{ Session::get('contestError') }}
+                            <a href="#" class="close">&times;</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="large-12 columns">
                     <h1>Wedstrijddatums</h1>

@@ -28,8 +28,9 @@
                                 </div>
                             </div> 
                                 
-                            <li><a href="{{ route('logout') }}">Uitloggen</a></li>
+                            
                         @endif
+                        <li><a href="{{ route('logout') }}">Uitloggen</a></li>
                     @endif
                 </ul>
             </section>

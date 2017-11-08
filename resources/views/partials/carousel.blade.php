@@ -1,7 +1,7 @@
 <!-- Carousel -->
 <div class="row">
 	<div class="large-12 columns">
-		<ul class="example-orbit" data-orbit>
+		<ul class="example-orbit shadow" data-orbit>
 			<li>
 				<img src="{{asset('assets/graphics/artist_carousel.jpg')}}" alt="vrouwelijke artiest in duotone filter">
 				<span class="orbit-caption">

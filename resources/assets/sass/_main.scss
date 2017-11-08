@@ -3,11 +3,12 @@ html, body {
     background:#E6EEF6;
     background-image:url("/assets/graphics/spotify_bg4.png");
     background-size: cover;
+    background-position: center;
     min-height: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-
+    font-family: Montserrat;
 }
 .call_to_action_wrapper {
     text-align: center;
@@ -80,6 +81,5 @@ a {
     color: $brand-primary;
 }
 a:hover {
-    text-decoration: underline;
-    color: $brand-primary;
+    color: $brand-secondary;
 }

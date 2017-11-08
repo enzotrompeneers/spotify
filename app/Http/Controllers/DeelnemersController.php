@@ -19,7 +19,9 @@ class DeelnemersController extends Controller
 
     public function destroy ($id) {
         $user = User::find($id);
-        if(!$user) return redirect()->back();
+        if(!$user) {
+            return redirect()->back();
+        }
         $user->delete();
 
         return back()->with('userDisqualified', 'Je hebt een persoon gedisqualificeerd.');
