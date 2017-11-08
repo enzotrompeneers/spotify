@@ -1,6 +1,8 @@
 html, body {
     position:relative; 
     background:#E6EEF6;
+    background-image:url("/assets/graphics/spotify_bg4.png");
+    background-size: cover;
     min-height: 100%;
     height: 100%;
     display: flex;
@@ -71,3 +73,13 @@ html, body {
         line-height: 1.2;
     }    
 } 
+label, p {
+    color: #fff;
+}
+a {
+    color: $brand-primary;
+}
+a:hover {
+    text-decoration: underline;
+    color: $brand-primary;
+}

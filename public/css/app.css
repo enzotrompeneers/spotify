@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.top-bar,
 .top-bar-section {
-  background-color: #2c3840;
+  background-color: #1ecd97;
   color: #fff;
 }
 
@@ -70,6 +70,8 @@ html,
 body {
   position: relative;
   background: #E6EEF6;
+  background-image: url("/assets/graphics/spotify_bg4.png");
+  background-size: cover;
   min-height: 100%;
   height: 100%;
   display: -webkit-box;
@@ -160,14 +162,28 @@ body {
   }
 }
 
+label,
+p {
+  color: #fff;
+}
+
+a {
+  color: #1ecd97;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1ecd97;
+}
+
 .marketing-site-footer {
-  background: #2c3840;
-  color: #8aa0ae;
+  background: #1ecd97;
+  color: #fff;
   padding: 2rem 0 0;
 }
 
 .marketing-site-footer .marketing-site-footer-menu-social a {
-  color: #fefefe;
+  color: #fff;
 }
 
 .marketing-site-footer .column-block {
@@ -185,13 +201,13 @@ body {
 }
 
 .marketing-site-footer-name {
-  color: #fefefe;
+  color: #fff;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
 
 .marketing-site-footer-title {
-  color: #fefefe;
+  color: #fff;
   margin-bottom: 1rem;
   font-size: 1.25rem;
   text-align: center;
@@ -231,7 +247,7 @@ body {
 }
 
 .marketing-site-footer-bottom .marketing-site-footer-bottom-links a {
-  color: #8aa0ae;
+  color: #fff;
 }
 
 @media screen and (max-width: 63.9375em) {
@@ -250,7 +266,7 @@ body {
 
 .social_icon {
   padding: 20px;
-  color: #8aa0ae;
+  color: #fff;
   font-size: 2rem;
 }
 
@@ -415,6 +431,7 @@ body {
 table {
   border-collapse: collapse;
   width: 100%;
+  opacity: 0.8;
 }
 
 table tr th,

@@ -3,7 +3,6 @@
 @section('content')
 @include('partials.carousel')
 
-<hr>
 @if(isset($succes_message))
     <div class="row">
         <div class="large-4 columns">
