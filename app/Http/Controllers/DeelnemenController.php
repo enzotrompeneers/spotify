@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Spotify;
 use App\Artist;
 use App\Track;
+use App\User;
 use App\Contest;
 use App\Participation;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class DeelnemenController extends Controller
 {
     public function index() {
+        $admin_email = User::where('isAdmin', 1)->value('email');
         $contest_available = Contest::all();
         $date_now = date('Y-m-d G:i:s ');
         $contest_id = 0;
@@ -64,7 +66,7 @@ class DeelnemenController extends Controller
             ->merge($tracks_from_artist2)
             ->shuffle();
 
-        return view('deelnemen', compact('artists1', 'artists2', 'tracks_from_artist1', 'tracks_from_artist2', 'all_tracks_shuffled', 'message', 'contest_id'));
+        return view('deelnemen', compact('artists1', 'artists2', 'tracks_from_artist1', 'tracks_from_artist2', 'all_tracks_shuffled', 'message', 'contest_id', 'admin_email'));
     }
 
     public function store(Request $request, $contest_id) {

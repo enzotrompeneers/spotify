@@ -4,20 +4,6 @@
 @include('partials.carousel')
 
 <hr>
-@if (Auth::user())
-    @if (Auth::user()->email == $admin_email)
-        <div class="row">
-            <div class="large-12 columns">
-                <h1>Admin</h1>
-                <a class="btn_spotify" href="{{ route('wedstrijdverantwoordelijke.index') }}">Toon Wedstrijdverantwoordelijke</a>
-                <a class="btn_spotify" href="{{ route('datum.index') }}">Toon Wedstrijddatums</a>
-                <a class="btn_spotify" href="{{ route('deelnemers.index') }}">Toon Deelnemers</a>
-            </div>
-        </div>
-        <hr>
-    @endif
-@endif
-
 @if(isset($succes_message))
     <div class="row">
         <div class="large-4 columns">
