@@ -21,7 +21,6 @@ class HomeController extends Controller
         $contest_id = $active_contest->id;
         $participants = Participation::where('contest_id', $contest_id)->with(['user'])->has('user')->orderBy('points', 'desc')->take(10)->get();
         
-        //var_dump(compact('partcipants'));die;
         $inactive_contests = Contest::where('isActive', 0)->first();
         $inactive_contests_id = $inactive_contests->id;
         $winners = Participation::where('contest_id', $inactive_contests_id)->with(['user'])->has('user')->orderBy('points', 'desc')->take(1)->get();  
